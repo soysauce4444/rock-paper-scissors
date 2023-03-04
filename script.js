@@ -21,18 +21,21 @@ function getComputerChoice (randomInt) {
 function getScore (playerSelection, computerSelection) {
     let computerScore =0;
     let playerScore = 0;
-    if (playerSelection == "rock" && computerSelection == "paper"
-    | playerSelection == "paper" && computerSelection == "scissors"
-    | playerSelection == "scissors" && computerSelection == "rock") {
+    if (playerSelection == "rock" && computerSelection == "scissors"
+    || playerSelection == "paper" && computerSelection == "rock"
+    || playerSelection == "scissors" && computerSelection == "paper") {
+        return "Player score is: " + (playerScore += playerScore);
+    }
+    else if (playerSelection == "rock" && computerSelection == "paper"
+    || playerSelection == "paper" && computerSelection == "scissors"
+    || playerSelection == "scissors" && computerSelection == "rock") {
         computerScore += computerScore;
+        return "Computer score is: " + computerScore;
     }
-    else if (playerSelection == "rock" && computerSelection == "scissors"
-    | playerSelection == "paper" && computerSelection == "rock"
-    | playerSelection == "scissors" && computerSelection == "paper") {
-        playerScore += playerScore;
-    }
+    /*
     return "Player score is: " + playerScore + 
     " and computer score is: " + computerScore;
+    */
 }
 
 //compare player & computer choices, return win or lose text
@@ -80,13 +83,11 @@ function game() {
 
 randomInt = getRandomInt(1, 3);
 computerSelection = getComputerChoice(randomInt);
-playerSelection = window.prompt("What's your choice?").toLowerCase();
 
 var playerScore;
 var computerScore;
 
 
 console.log(game());
-console.log(getScore(playerSelection, computerSelection));
-
+console.log(getScore(playerSelection, computerSelection))
 
