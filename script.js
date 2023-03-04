@@ -1,3 +1,11 @@
+//random number generator for computer choice
+function getRandomInt (min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+//assign computer choice from random number generator results
 function getComputerChoice (randomInt) {
     if (randomInt == 1) {
         return "rock";
@@ -10,12 +18,7 @@ function getComputerChoice (randomInt) {
     }
 }
 
-function getRandomInt (min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
+//compare player & computer choices, return win or lose text
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
         return "It's a tie!";
@@ -43,12 +46,24 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function game() {
+    for (let i = 0; i < 5; i++) {
+        randomInt = getRandomInt(1, 3);
+        getComputerChoice(randomInt);
+        computerSelection = getComputerChoice(randomInt);
+        console.log(computerSelection);
+
+        playerSelection = window.prompt("What's your choice?").toLowerCase();
+        console.log(playerSelection);
+
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
+
 randomInt = getRandomInt(1, 3);
 computerSelection = getComputerChoice(randomInt);
 playerSelection = window.prompt("What's your choice?").toLowerCase();
 
-console.log(computerSelection);
-console.log(playerSelection);
-console.log(playRound(playerSelection, computerSelection));
+console.log(game());
 
 
