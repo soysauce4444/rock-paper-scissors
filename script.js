@@ -19,9 +19,6 @@ function getComputerChoice (randomInt) {
 }
 
 function getScore (playerSelection, computerSelection) {
-    let computerScore =0;
-    let playerScore = 0;
-
     if (playerSelection == "rock" && computerSelection == "scissors"
     || playerSelection == "paper" && computerSelection == "rock"
     || playerSelection == "scissors" && computerSelection == "paper") {
@@ -80,13 +77,23 @@ function game() {
         console.log(playRound(playerSelection, computerSelection));
         console.log(getScore(playerSelection, computerSelection));
     }
+    if (playerScore > computerScore) {
+        return "Congrats, you win!";
+    }
+    else if (playerScore < computerScore) {
+        return "Sorry, you lose :(";
+    }
+    else {
+        return "It's a time.";
+    }
+
 }
 
 randomInt = getRandomInt(1, 3);
 
 var computerSelection;
 var playerSelection;
-var playerScore;
-var computerScore;
+var playerScore = 0;
+var computerScore = 0;
 
 console.log(game(playerSelection, computerSelection));
