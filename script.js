@@ -21,21 +21,22 @@ function getComputerChoice (randomInt) {
 function getScore (playerSelection, computerSelection) {
     let computerScore =0;
     let playerScore = 0;
+
     if (playerSelection == "rock" && computerSelection == "scissors"
     || playerSelection == "paper" && computerSelection == "rock"
     || playerSelection == "scissors" && computerSelection == "paper") {
-        return "Player score is: " + (playerScore += playerScore);
+        playerScore++;
+        return "Player score is: " + playerScore + ", computer score is " + computerScore;
     }
     else if (playerSelection == "rock" && computerSelection == "paper"
     || playerSelection == "paper" && computerSelection == "scissors"
     || playerSelection == "scissors" && computerSelection == "rock") {
-        computerScore += computerScore;
-        return "Computer score is: " + computerScore;
+        computerScore++;
+        return "Player score is: " + playerScore + ", computer score is " + computerScore;
     }
-    /*
-    return "Player score is: " + playerScore + 
-    " and computer score is: " + computerScore;
-    */
+    else {
+        return "Player score is: " + playerScore + ", computer score is " + computerScore;
+    }
 }
 
 //compare player & computer choices, return win or lose text
@@ -70,7 +71,6 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     for (let i = 0; i < 5; i++) {
         randomInt = getRandomInt(1, 3);
-        getComputerChoice(randomInt);
         computerSelection = getComputerChoice(randomInt);
         console.log(computerSelection);
 
@@ -78,16 +78,15 @@ function game() {
         console.log(playerSelection);
 
         console.log(playRound(playerSelection, computerSelection));
+        console.log(getScore(playerSelection, computerSelection));
     }
 }
 
 randomInt = getRandomInt(1, 3);
-computerSelection = getComputerChoice(randomInt);
 
+var computerSelection;
+var playerSelection;
 var playerScore;
 var computerScore;
 
-
-console.log(game());
-console.log(getScore(playerSelection, computerSelection))
-
+console.log(game(playerSelection, computerSelection));
