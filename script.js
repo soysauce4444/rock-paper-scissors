@@ -1,99 +1,25 @@
-//random number generator for computer choice
-function getRandomInt (min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
+function randInt (min, max) {
+    return Math.floor (Math.random() * (max - min + 1) + min);
 }
 
-//assign computer choice from random number generator results
-function getComputerChoice (randomInt) {
-    if (randomInt == 1) {
-        return "rock";
-    }
-    else if (randomInt == 2) {
-        return "paper";
-    }
-    else {
-        return "scissors";
-    }
+function playRound (getComputerChoice, playerChoice) {
+    getComputerChoice;
+    playerChoice;
+    console.log("I chose: ", getComputerChoice);
+    console.log("You chose: ", playerChoice);
+    return (getComputerChoice == playerChoice) ? "It's a tie." :
+
+           (getComputerChoice == "rock" && playerChoice == "scissors" ||
+           getComputerChoice == "paper" && playerChoice == "rock" ||
+           getComputerChoice == "scissors" && playerChoice == "paper") ? "I win!" :
+
+           "I lose T_T";
 }
 
-function getScore (playerSelection, computerSelection) {
-    if (playerSelection == "rock" && computerSelection == "scissors"
-    || playerSelection == "paper" && computerSelection == "rock"
-    || playerSelection == "scissors" && computerSelection == "paper") {
-        playerScore++;
-        return "Player score is: " + playerScore + ", computer score is " + computerScore;
-    }
-    else if (playerSelection == "rock" && computerSelection == "paper"
-    || playerSelection == "paper" && computerSelection == "scissors"
-    || playerSelection == "scissors" && computerSelection == "rock") {
-        computerScore++;
-        return "Player score is: " + playerScore + ", computer score is " + computerScore;
-    }
-    else {
-        return "Player score is: " + playerScore + ", computer score is " + computerScore;
-    }
-}
+var getComputerChoice = 
+    (randInt(1,3) == 1) ? getComputerChoice = "rock" :
+    (randInt(1,3) == 2) ? getComputerChoice = "paper" :
+    "scissors";
+var playerChoice = prompt("Choose rock, paper, or scissors: ").toLowerCase();
 
-//compare player & computer choices, return win or lose text
-function playRound(playerSelection, computerSelection) {
-
-    if (playerSelection == computerSelection) {
-        return "It's a tie!";
-    } 
-    else if (playerSelection == "rock" && computerSelection == "paper") {
-        return "You lose, paper beats rock."
-    } 
-    else if (playerSelection == "paper" && computerSelection == "scissors") {
-        return "You lose, scissors beats paper."
-    } 
-    else if (playerSelection == "scissors" && computerSelection == "rock") {
-        return "You lose, rock beats scissors."
-    } 
-    else if (playerSelection == "rock" && computerSelection == "scissors") {
-        return "You win, rock beats scissors!"
-    } 
-    else if (playerSelection == "paper" && computerSelection == "rock") {
-       return "You win, paper beats rock!"
-    } 
-    else if (playerSelection == "scissors" && computerSelection == "paper") {
-        return "You win, scissors beats paper!"
-    }
-    else {
-        return "Invalid input!"
-    }
-}
-
-function game() {
-    for (let i = 0; i < 5; i++) {
-        randomInt = getRandomInt(1, 3);
-        computerSelection = getComputerChoice(randomInt);
-        console.log(computerSelection);
-
-        playerSelection = window.prompt("What's your choice?").toLowerCase();
-        console.log(playerSelection);
-
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(getScore(playerSelection, computerSelection));
-    }
-    if (playerScore > computerScore) {
-        return "Congrats, you win!";
-    }
-    else if (playerScore < computerScore) {
-        return "Sorry, you lose :(";
-    }
-    else {
-        return "It's a time.";
-    }
-
-}
-
-randomInt = getRandomInt(1, 3);
-
-var computerSelection;
-var playerSelection;
-var playerScore = 0;
-var computerScore = 0;
-
-console.log(game(playerSelection, computerSelection));
+console.log(playRound(getComputerChoice,playerChoice));
