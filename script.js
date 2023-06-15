@@ -3,8 +3,11 @@ function randInt (min, max) {
 }
 
 function playRound (getComputerChoice, playerChoice) {
-    getComputerChoice;
-    playerChoice;
+    getComputerChoice  = 
+        (randInt(1,3) == 1) ? getComputerChoice = "rock" :
+        (randInt(1,3) == 2) ? getComputerChoice = "paper" :
+        "scissors";
+    var playerChoice = prompt("Choose rock, paper, or scissors: ").toLowerCase();
     console.log("I chose: ", getComputerChoice);
     console.log("You chose: ", playerChoice);
     return (getComputerChoice == playerChoice) ? "It's a tie." :
@@ -16,10 +19,20 @@ function playRound (getComputerChoice, playerChoice) {
            "I lose T_T";
 }
 
-var getComputerChoice = 
-    (randInt(1,3) == 1) ? getComputerChoice = "rock" :
-    (randInt(1,3) == 2) ? getComputerChoice = "paper" :
-    "scissors";
-var playerChoice = prompt("Choose rock, paper, or scissors: ").toLowerCase();
+function game() {
+    for (i = 0; i < 5; i++) {
+        /*
+        var getComputerChoice = 
+            (randInt(1,3) == 1) ? getComputerChoice = "rock" :
+            (randInt(1,3) == 2) ? getComputerChoice = "paper" :
+            "scissors";
+        var playerChoice = prompt("Choose rock, paper, or scissors: ").toLowerCase();
+*/
+        playRound(getComputerChoice, playerChoice);
+    }
+}
 
-console.log(playRound(getComputerChoice,playerChoice));
+var getComputerChoice;
+var playerChoice;
+
+console.log(game());
