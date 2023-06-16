@@ -14,8 +14,12 @@ function getScore (ComputerChoice, playerChoice) {
            playerScore++;
 }
 
-// report winner or loser
-
+// determine the winner
+function getWinner (computerScore, playerScore) {
+    return (computerScore == playerScore) ? "This game is a tie." :
+            (computerScore > playerScore) ? "I won the game.":
+            "You won the game.";
+}
 
 function playRound (ComputerChoice, playerChoice) {
     /*  enable for single rounds
@@ -24,16 +28,21 @@ function playRound (ComputerChoice, playerChoice) {
         (randInt(1,3) == 2) ? ComputerChoice = "paper" :
         "scissors";
     var playerChoice = prompt("Choose rock, paper, or scissors: ").toLowerCase();
-    */
+    
     console.log("I chose: ", ComputerChoice);
     console.log("You chose: ", playerChoice);
-    return (ComputerChoice == playerChoice) ? "It's a tie." :
+    */
+    return  "I chose: " + ComputerChoice + "\nYou chose: " + playerChoice;
+    
+    /*
+    (ComputerChoice == playerChoice) ? "It's a tie." :
 
            (ComputerChoice == "rock" && playerChoice == "scissors" ||
            ComputerChoice == "paper" && playerChoice == "rock" ||
            ComputerChoice == "scissors" && playerChoice == "paper") ? "I win!":
 
            "I lose T_T";
+           */
 }
 
 function game() {
@@ -49,9 +58,10 @@ function game() {
 
         console.log(playRound(ComputerChoice, playerChoice));
     }
+    console.log("\n" + getWinner(computerScore, playerScore));
     return ("Your score: " + playerScore + "\nMy score: " + computerScore);
 }
-
+    
 var ComputerChoice;
 var playerChoice;
 
