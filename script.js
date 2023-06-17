@@ -1,6 +1,8 @@
 const rock = document.querySelector('#rock');
 rock.addEventListener('click', () => {
-    console.log(playRound(ComputerChoice, 'rock'));
+    var div = document.createElement('div');
+    div.textContent = playRound(ComputerChoice, 'rock');
+    document.body.appendChild(div);
 })
 
 const paper = document.querySelector('#paper');
@@ -31,9 +33,14 @@ function getScore (ComputerChoice, playerChoice) {
 
 // determine the winner
 function getWinner (computerScore, playerScore) {
+    /*
     return (computerScore == playerScore) ? "This game is a tie." :
             (computerScore > playerScore) ? "I won the game.":
             "You won the game.";
+            */
+    return (computerScore == 5 && computerScore > playerScore) ? "I win the game." :
+            (playerScore == 5 && computerScore < playerScore) ? "You win the game." :
+            "This game isn't over yet!";
 }
 
 function playRound (ComputerChoice, playerChoice) {
@@ -44,15 +51,19 @@ function playRound (ComputerChoice, playerChoice) {
         "scissors";
     // var playerChoice = prompt("Choose rock, paper, or scissors: ").toLowerCase();
     
-    console.log("I chose: " + ComputerChoice + "\nYou chose: " + playerChoice);
-    
-    return (ComputerChoice == playerChoice) ? "It's a tie." :
+    // console.log("I chose: " + ComputerChoice + "\nYou chose: " + playerChoice);
+
+    return (ComputerChoice == playerChoice) ? 
+            "I chose: "+ ComputerChoice + "\nYou chose: " +
+            playerChoice + "\nIt's a tie." :
 
            (ComputerChoice == "rock" && playerChoice == "scissors" ||
            ComputerChoice == "paper" && playerChoice == "rock" ||
-           ComputerChoice == "scissors" && playerChoice == "paper") ? "I win!":
+           ComputerChoice == "scissors" && playerChoice == "paper") ? 
+           "I chose: "+ ComputerChoice + "\nYou chose: " +
+           playerChoice +"\nI win!":
 
-           "I lose T_T";
+           "I chose: "+ ComputerChoice + "\nYou chose: " + playerChoice + "\nI lose T_T";
 }
 /*
 function game() {
@@ -77,5 +88,3 @@ var playerChoice;
 
 var computerScore = 0;
 var playerScore = 0;
-
-console.log(playRound(ComputerChoice, playerChoice));
