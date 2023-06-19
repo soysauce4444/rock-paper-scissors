@@ -10,19 +10,40 @@ rock.addEventListener('click', () => {
         "scissors";
     div.textContent = playRound(computerChoice, 'rock');
     getScore(computerChoice, 'rock');
-    pnt.textContent = getWinner(computerScore, playerScore);
+    pnt.textContent = getWinner(computerScore, playerScore) + 
+    ", My score; " + computerScore + 
+    " your score: " + playerScore;
     document.body.appendChild(div);
 })
 
 const paper = document.querySelector('#paper');
 paper.addEventListener('click', () => {
-    console.log(playRound(ComputerChoice, 'paper'));
+    var div = document.createElement('div');
+    var computerChoice  = 
+        (randInt(1,3) == 1) ? computerChoice = "rock" :
+        (randInt(1,3) == 2) ? computerChoice = "paper" :
+        "scissors";
+    div.textContent = playRound(computerChoice, 'paper');
+    getScore(computerChoice, 'paper');
+    pnt.textContent = getWinner(computerScore, playerScore) + 
+    ", My score; " + computerScore + 
+    " your score: " + playerScore;
+    document.body.appendChild(div);
 })
 
 const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', () => {
-    console.log(playRound(computerChoice, 'scissors'));
-})
+    var div = document.createElement('div');
+    var computerChoice  = 
+        (randInt(1,3) == 1) ? computerChoice = "rock" :
+        (randInt(1,3) == 2) ? computerChoice = "paper" :
+        "scissors";
+    div.textContent = playRound(computerChoice, 'scissors');
+    getScore(computerChoice, 'scissors');
+    pnt.textContent = getWinner(computerScore, playerScore) + 
+    ", My score; " + computerScore + 
+    " your score: " + playerScore;
+    document.body.appendChild(div);})
 
 // RNG
 function randInt (min, max) {
@@ -55,8 +76,8 @@ function getWinner (computerScore, playerScore) {
             (computerScore > playerScore) ? "I won the game.":
             "You won the game.";
             */
-    return (computerScore == 2 && computerScore > playerScore) ? "I win the game." :
-            (playerScore == 2 && computerScore < playerScore) ? "You win the game." :
+    return (computerScore == 5 && computerScore > playerScore) ? "I win the game." :
+            (playerScore == 5 && computerScore < playerScore) ? "You win the game." :
             "This game isn't over yet!";
 }
 
@@ -92,7 +113,6 @@ function game() {
     return ("Your score: " + playerScore + "\nMy score: " + computerScore);
 }
 */
-//let computerChoice;
 let playerChoice;
 let computerChoice;
 
